@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wheatDesignSO: {fileID: 11400000, guid: 72cfad790afc3ff4ba7cb0f2c85e1919, type: 2}
   _playerController: {fileID: 0}
+  _playerStateUI: {fileID: 0}
 --- !u!1 &6877785665803740206
 GameObject:
   m_ObjectHideFlags: 0
