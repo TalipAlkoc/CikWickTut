@@ -38,7 +38,7 @@ public class PlayerStateUI : MonoBehaviour
     [SerializeField] Ease _moveEase;
 
 
-    public RectTransform GetBoosterSpeedTransform => _boosterSlowTransform;
+    public RectTransform GetBoosterSpeedTransform => _boosterSpeedTransform;
     public RectTransform GetBoosterJumpTransform => _boosterJumpTransform;
     public RectTransform GetBoosterSlowTransform => _boosterSlowTransform;
 
@@ -70,14 +70,14 @@ public class PlayerStateUI : MonoBehaviour
         {
             case PlayerState.Idle:
             case PlayerState.Move:
-                //ÜSTTEKÝ KART AÇILACAK
+                //?STTEK? KART A?ILACAK
                 SetStateUserInterfaces(_playerWalkingActiveSprite,_playerSlidingPassiveSprite,_playerWalkingTransform,_playerSlidingTransform);
                 break;
             
 
             case PlayerState.SlideIdle:
             case PlayerState.Slide:
-                //ALTTAKÝ KART AÇILACAK
+                //ALTTAK? KART A?ILACAK
                 SetStateUserInterfaces(_playerWalkingPassiveSprite,_playerSlidingActiveSprite,_playerSlidingTransform, _playerWalkingTransform);
                 break;
         }
@@ -85,13 +85,14 @@ public class PlayerStateUI : MonoBehaviour
     }
 
 
-    private void SetStateUserInterfaces(Sprite playerWalkingSprite,Sprite playerSlidingSprite,RectTransform activeTransform,RectTransform passiveTransform)
+    private void SetStateUserInterfaces(Sprite playerWalkingSprite,Sprite playerSlidingSprite,
+        RectTransform activeTransform,RectTransform passiveTransform)
     {
         _playerWalkingImage.sprite = playerWalkingSprite;
         _playerSlidingImage.sprite = playerSlidingSprite;
 
         activeTransform.DOAnchorPosX(-25f, _moveDuration).SetEase(_moveEase);
-        activeTransform.DOAnchorPosX(-90f, _moveDuration).SetEase(_moveEase);
+        passiveTransform.DOAnchorPosX(-90f, _moveDuration).SetEase(_moveEase);
     }
 
     private IEnumerator SetBoosterUserInterfaces(RectTransform activeTransform, Image boosterImage,Image wheatImage,
