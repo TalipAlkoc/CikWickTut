@@ -23,7 +23,8 @@ public class GoldWheatCollectıble : MonoBehaviour,ICollectible
         _playerController.SetMovementSpeed(_wheatDesignSO.IncreaseDecreaseMultiplayer,_wheatDesignSO.ResetBoostDuration);
 
         _playerStateUI.PlayBoosterUIAnimations(_playerBoosterTransform,_playerBoosterImage,_playerStateUI.GetGoldBoosterWheatImage,
-            _wheatDesignSO.ActiveWheatSprite,_wheatDesignSO.PassiveWheatSprite,_wheatDesignSO.ActiveSprite,_wheatDesignSO.PassiveSprite,_wheatDesignSO.ResetBoostDuration);
+            _wheatDesignSO.ActiveSprite,_wheatDesignSO.PassiveSprite,_wheatDesignSO.ActiveWheatSprite,_wheatDesignSO.PassiveWheatSprite,
+            _wheatDesignSO.ResetBoostDuration);
 
         Destroy(gameObject);
     }
