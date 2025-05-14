@@ -18,7 +18,7 @@ public class TimerUI : MonoBehaviour
 
     private bool _isTimeRunning;
     private Tween _rotationTween;
-
+    private string _finalTime;
 
     private void Start()
     {
@@ -34,11 +34,14 @@ public class TimerUI : MonoBehaviour
         {
             case GameState.Pause:
                 //PAUSE TIMER
-                PauseTımer();
+                StopTımer();
                 break;
             case GameState.Resume:
                 ResumeTımer();
                 //RESUME TIMER
+                break;
+            case GameState.GameOver:
+                FinishTimer();
                 break;
                
         }
@@ -58,7 +61,7 @@ public class TimerUI : MonoBehaviour
         InvokeRepeating(nameof(UpadateTimerUI), 0f, 1f);
     }
 
-    private void PauseTımer()
+    private void StopTımer()
     {
         _isTimeRunning = false;
         CancelInvoke(nameof(UpadateTimerUI));
@@ -75,6 +78,19 @@ public class TimerUI : MonoBehaviour
         }
     }
 
+    private void FinishTimer()
+    {
+        StopTımer();
+        _finalTime = GetFormattedElapsedTime();
+    }
+
+    private string GetFormattedElapsedTime()
+    {
+        int minutes = Mathf.FloorToInt(_elapsedTime / 60f);
+        int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
+
+        return _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
     private void UpadateTimerUI()
     {
@@ -88,5 +104,10 @@ public class TimerUI : MonoBehaviour
         int seconds = Mathf.FloorToInt(_elapsedTime % 60f);
 
         _timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public string GetFinalTime()
+    {
+        return _finalTime;
     }
 }
