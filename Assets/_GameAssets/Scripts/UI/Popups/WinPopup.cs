@@ -11,16 +11,19 @@ public class WinPopup : MonoBehaviour
     [SerializeField] private Button _mainMenuButton;
     [SerializeField] private TMP_Text _timerText;
 
-
+    
     private void OnEnable()
     {
         _timerText.text = _timerUI.GetFinalTime();
         _oneMoreButton.onClick.AddListener(OnOneMoreButtonClicked);
     }
-
+    
+    
     private void OnOneMoreButtonClicked()
     {
         SceneManager.LoadScene(Consts.SceneNames.GAME_SCENE);
+        Debug.Log("aa");
     }
-   
+    
+
 }
