@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Playables;
 public class PlayerStateUI : MonoBehaviour
 {
     [Header("References")]
@@ -16,6 +16,7 @@ public class PlayerStateUI : MonoBehaviour
     [SerializeField] private RectTransform _boosterSpeedTransform;
     [SerializeField] private RectTransform _boosterJumpTransform;
     [SerializeField] private RectTransform _boosterSlowTransform;
+    [SerializeField] private PlayableDirector _playableDirector;
 
     [Header("Images")]
 
@@ -61,6 +62,13 @@ public class PlayerStateUI : MonoBehaviour
     {
         _playerController.OnPlayerStateChanged += PlayerController_OnPlayerStateChanged;
 
+        _playableDirector.stopped += OnTimelineFinished;
+
+        
+    }
+
+    private void OnTimelineFinished(PlayableDirector obj)
+    {
         SetStateUserInterfaces(_playerWalkingActiveSprite, _playerSlidingPassiveSprite, _playerWalkingTransform, _playerSlidingTransform);
     }
 
