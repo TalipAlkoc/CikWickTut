@@ -27,7 +27,7 @@ public class GoldWheatCollectıble : MonoBehaviour,ICollectible
             _wheatDesignSO.ResetBoostDuration);
 
         CameraShake.Instance.ShakeCamera(0.5f, 0.5f);
-
+        AudioManager.Instance.Play(SoundType.PickupGoodSound);
         Destroy(gameObject);
     }
 }
