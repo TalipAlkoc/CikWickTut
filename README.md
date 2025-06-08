@@ -1,2 +1,2 @@
-# CikWickTut
-CikWickT.
+# CikWick
+CikWick
